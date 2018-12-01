@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "name": "Tarea 1",
+        "image": "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
+        "description": "Descripción de la tarea",
+        "checklist": [
+            {"title": "Titulo del check 1", "checked": false},
+            {"title": "Titulo del check 2", "checked": false},
+            {"title": "Titulo del check 3", "checked": false}
+        ],
+        "created_at": "",
+        "updated_at": ""
+    },
+    {
+        "id": 2,
+        "name": "Tarea 2",
+        "description": "Descripción de la tarea",
+        "checklist": [
+            {"title": "Titulo del check 1", "checked": false},
+            {"title": "Titulo del check 2", "checked": false},
+            {"title": "Titulo del check 3", "checked": false}
+        ],
+        "created_at": "",
+        "updated_at": ""
+    },
+    {
+        "id": 2,
+        "name": "Tarea 2",
+        "description": "Descripción de la tarea",
+        "checklist": [],
+        "created_at": "",
+        "updated_at": ""
+    },
+    {
+        "id": 2,
+        "name": "Tarea 2",
+        "image": "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
+        "description": "Descripción de la tarea",
+        "checklist": [],
+        "created_at": "",
+        "updated_at": ""
+    },
+    {
+        "id": 2,
+        "name": "Tarea 2",
+        "image": "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
+        "description": "Descripción de la tarea",
+        "checklist": [],
+        "created_at": "",
+        "updated_at": ""
+    },
+    {
+        "id": 2,
+        "name": "Tarea 2",
+        "image": "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
+        "description": "Descripción de la tarea",
+        "checklist": [],
+        "created_at": "",
+        "updated_at": ""
+    }
+]
