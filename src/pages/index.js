@@ -1,13 +1,21 @@
-import { Layout, Row, Col } from 'antd';
-import { Component } from 'react';
-import { TaskService } from "../services/TaskService";
+import React, { Component } from 'react';
+import { Layout } from 'antd';
+import Masonry from 'react-masonry-component';
 import TaskItem from "../components/TaskItem";
+import TaskDrawerForm from "../components/TaskDrawer";
+import { TaskService } from "../services/TaskService";
+
+const masonryOptions = {
+    transitionDuration: 0
+};
+const imagesLoadedOptions = { background: '.my-bg-image-el' }
 
 export default class IndexPage extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			tasks: []
+			tasks: [],
+			currentTast: {}
 		}
 		this.taskService = new TaskService();
 	}
@@ -20,22 +28,29 @@ export default class IndexPage extends Component {
 
 	listTasks() {
 		const taskItems = this.state.tasks.map(task =>
-			<Col className="gutter-row" span={6}>
-				<TaskItem task={task} />
-			</Col>
+				<TaskItem task={task} onClick={this.showAlert} />
 		);
 		return taskItems;
 	}
 
-	/**
-	 * @todo Muestra las tarjetas de forma desordenada.
-	 */
+	showAlert(task) {
+		console.log(this.refs);
+		// this.taskDrawerForm.current.loadAndShow(task);
+	}
+
 	render() {
 		return (
 			<Layout.Content>
-				<Row gutter={10} type="flex">
+				<Masonry
+					className={'my-gallery-class'} // default ''
+					options={masonryOptions} // default {}
+					disableImagesLoaded={false} // default false
+					updateOnEachImageLoad={false} // default false and works only if disableImagesLoaded is false
+					imagesLoadedOptions={imagesLoadedOptions} // default {}
+				>
 					{this.listTasks()}
-				</Row>
+				</Masonry>
+				<TaskDrawerForm ref="taskDrawerForm" />
 			</Layout.Content>
 		);
 	}
