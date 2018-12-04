@@ -25,7 +25,7 @@
         "updated_at": ""
     },
     {
-        "id": 2,
+        "id": 3,
         "name": "Tarea 2",
         "description": "Descripción de la tarea",
         "checklist": [],
@@ -33,7 +33,7 @@
         "updated_at": ""
     },
     {
-        "id": 2,
+        "id": 4,
         "name": "Tarea 2",
         "image": "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
         "description": "Descripción de la tarea",
@@ -42,7 +42,7 @@
         "updated_at": ""
     },
     {
-        "id": 2,
+        "id": 5,
         "name": "Tarea 2",
         "image": "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
         "description": "Descripción de la tarea",
@@ -51,7 +51,7 @@
         "updated_at": ""
     },
     {
-        "id": 2,
+        "id": 6,
         "name": "Tarea 2",
         "image": "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
         "description": "Descripción de la tarea",
