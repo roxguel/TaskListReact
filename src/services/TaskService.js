@@ -8,10 +8,15 @@ export class TaskService {
         return Promise.resolve(tasks.filter(c => c.id === id)[0]);
     }
     create(data) {
-
+        tasks.push(data);
     }
     update(id, data) {
-
+        return Promise.resolve(tasks.map(task => {
+            if (task.id === id) {
+                return data;
+            }
+            return task;
+        }));
     }
     delete(id) {
 
