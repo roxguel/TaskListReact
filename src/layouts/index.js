@@ -6,7 +6,7 @@ function BasicLayout(props) {
 	return (
 		<Layout className="layout">
 			<Header>
-				<div class={styles.logo} />
+				<div className={styles.logo} />
 				<Menu
 					theme="dark"
 					mode="horizontal"
@@ -21,7 +21,7 @@ function BasicLayout(props) {
 				<Breadcrumb style={{ margin: '16px 0' }}>
 					<Breadcrumb.Item>Tasks</Breadcrumb.Item>
 				</Breadcrumb>
-				<div class={styles.content}>{props.children}</div>
+				<div className={styles.content}>{props.children}</div>
 			</Content>
 			<Footer style={{ textAlign: 'center' }}>
 				TaskList with React © 2018 Roxgüel
