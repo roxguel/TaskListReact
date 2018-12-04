@@ -1,5 +1,6 @@
 import { Component } from "react";
-import { Drawer, Form, Button, Col, Row, Input, Select, DatePicker } from 'antd';
+import { TaskService } from "../services/TaskService";
+import { Drawer, Form, Button, Col, Row, Input, Select } from 'antd';
 
 const { Option } = Select;
 
@@ -24,7 +25,13 @@ class TaskDrawer extends Component {
     }
 
     saveAndClose = () => {
-
+        this.taskService = new TaskService();
+        if (this.state.task.id) {
+            this.taskService.update(this.state.task.id, this.state.task);
+        } else {
+            this.taskService.create(this.state.task);
+        }
+        this.onClose();
     }
 
     onClose = () => {
@@ -33,17 +40,11 @@ class TaskDrawer extends Component {
         });
     };
 
-    /**
-     * Esto esta agarrado de los pelos
-     */
-    handleChange = (e) => {
-        let values = this.props.form.getFieldsValue();
-        let task = {
-            name: values.name,
-            description: values.description,
-            image: values.image,
-            priority: values.priority
-        }
+    handleNumberChange = (e) => {
+        const field = e.target.id;
+        const value = e.target.value;
+        const task = this.state.task;
+        task[field] = value;
         this.setState({task});
     }
 
@@ -69,7 +70,7 @@ class TaskDrawer extends Component {
                             <Form.Item label="Name">
                                 {getFieldDecorator('name', {
                                     rules: [{ required: true, message: 'please enter name' }],
-                                })(<Input placeholder="please enter name" />)}
+                                })(<Input onChange={this.handleNumberChange} placeholder="please enter name" />)}
                             </Form.Item>
                         </Col>
                     </Row>
@@ -84,6 +85,7 @@ class TaskDrawer extends Component {
                     </Row>
                     <Row gutter={16}>
                         <Col span={32}>
+                            {/* <img src={} /> */}
                             <Form.Item label="URL Image">
                                 {getFieldDecorator('image', {
                                     rules: [{ required: true, message: 'please enter url image' }],
