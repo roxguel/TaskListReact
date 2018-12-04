@@ -9,7 +9,9 @@ const masonryOptions = {
     transitionDuration: 0
 };
 const imagesLoadedOptions = { background: '.my-bg-image-el' }
-
+/**
+ * @todo Refresh data on save task.
+ */
 export default class IndexPage extends Component {
 	constructor(props) {
 		super(props);
@@ -35,7 +37,7 @@ export default class IndexPage extends Component {
 		return taskItems;
 	}
 
-	showAlert(task) {
+	showAlert = (task) => {
 		this.taskDrawerRef.current.loadAndShow(task);
 	}
 
