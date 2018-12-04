@@ -4,7 +4,7 @@ import { Drawer, Form, Button, Col, Row, Input, Select, DatePicker } from 'antd'
 const { Option } = Select;
 
 class TaskDrawer extends Component {
-    state = { visible: false };
+    state = { visible: false, task:{}, title: 'Create new task' };
 
     showDrawer = () => {
         this.setState({
@@ -12,8 +12,19 @@ class TaskDrawer extends Component {
         });
     };
 
-    loadAndShow(task) {
-        console.log('task', task);
+    loadAndShow = (task) => {
+        this.setState({task});
+        this.props.form.setFieldsValue({
+            name: task.name,
+            description: task.description,
+            image: task.image,
+            priority: task.priority,
+        });
+        this.showDrawer();
+    }
+
+    saveAndClose = () => {
+
     }
 
     onClose = () => {
@@ -22,12 +33,26 @@ class TaskDrawer extends Component {
         });
     };
 
+    /**
+     * Esto esta agarrado de los pelos
+     */
+    handleChange = (e) => {
+        let values = this.props.form.getFieldsValue();
+        let task = {
+            name: values.name,
+            description: values.description,
+            image: values.image,
+            priority: values.priority
+        }
+        this.setState({task});
+    }
+
     render() {
         const { getFieldDecorator } = this.props.form;
         return (
             <Drawer
-                title="Create"
-                width={720}
+                title={this.state.title}
+                width={360}
                 placement="right"
                 onClose={this.onClose}
                 maskClosable={false}
@@ -38,93 +63,47 @@ class TaskDrawer extends Component {
                     paddingBottom: 53,
                 }}
             >
-                <Form layout="vertical" hideRequiredMark>
+                <Form layout="vertical" id="form-task" hideRequiredMark onChange={this.handleChange}>
                     <Row gutter={16}>
-                        <Col span={12}>
+                        <Col span={32}>
                             <Form.Item label="Name">
                                 {getFieldDecorator('name', {
-                                    rules: [{ required: true, message: 'please enter user name' }],
-                                })(<Input placeholder="please enter user name" />)}
-                            </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            <Form.Item label="Url">
-                                {getFieldDecorator('url', {
-                                    rules: [{ required: true, message: 'please enter url' }],
-                                })(
-                                    <Input
-                                        style={{ width: '100%' }}
-                                        addonBefore="http://"
-                                        addonAfter=".com"
-                                        placeholder="please enter url"
-                                    />
-                                )}
+                                    rules: [{ required: true, message: 'please enter name' }],
+                                })(<Input placeholder="please enter name" />)}
                             </Form.Item>
                         </Col>
                     </Row>
-                    <Row gutter={16}>
-                        <Col span={12}>
-                            <Form.Item label="Owner">
-                                {getFieldDecorator('owner', {
-                                    rules: [{ required: true, message: 'Please select an owner' }],
-                                })(
-                                    <Select placeholder="Please select an owner">
-                                        <Option value="xiao">Xiaoxiao Fu</Option>
-                                        <Option value="mao">Maomao Zhou</Option>
-                                    </Select>
-                                )}
-                            </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            <Form.Item label="Type">
-                                {getFieldDecorator('type', {
-                                    rules: [{ required: true, message: 'Please choose the type' }],
-                                })(
-                                    <Select placeholder="Please choose the type">
-                                        <Option value="private">Private</Option>
-                                        <Option value="public">Public</Option>
-                                    </Select>
-                                )}
-                            </Form.Item>
-                        </Col>
-                    </Row>
-                    <Row gutter={16}>
-                        <Col span={12}>
-                            <Form.Item label="Approver">
-                                {getFieldDecorator('approver', {
-                                    rules: [{ required: true, message: 'Please choose the approver' }],
-                                })(
-                                    <Select placeholder="Please choose the approver">
-                                        <Option value="jack">Jack Ma</Option>
-                                        <Option value="tom">Tom Liu</Option>
-                                    </Select>
-                                )}
-                            </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            <Form.Item label="DateTime">
-                                {getFieldDecorator('dateTime', {
-                                    rules: [{ required: true, message: 'Please choose the dateTime' }],
-                                })(
-                                    <DatePicker.RangePicker
-                                        style={{ width: '100%' }}
-                                        getPopupContainer={trigger => trigger.parentNode}
-                                    />
-                                )}
-                            </Form.Item>
-                        </Col>
-                    </Row>
-                    <Row gutter={16}>
-                        <Col span={24}>
+                    <Row>
+                        <Col span={32}>
                             <Form.Item label="Description">
                                 {getFieldDecorator('description', {
-                                    rules: [
-                                        {
-                                            required: true,
-                                            message: 'please enter url description',
-                                        },
-                                    ],
-                                })(<Input.TextArea rows={4} placeholder="please enter url description" />)}
+                                    rules: [{ required: true, message: 'please enter description' }],
+                                })(<Input.TextArea placeholder="please enter description" />)}
+                            </Form.Item>
+                        </Col>
+                    </Row>
+                    <Row gutter={16}>
+                        <Col span={32}>
+                            <Form.Item label="URL Image">
+                                {getFieldDecorator('image', {
+                                    rules: [{ required: true, message: 'please enter url image' }],
+                                })(<Input placeholder="please enter url image" />)}
+                            </Form.Item>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span={32}>
+                            <Form.Item label="Priority">
+                                {getFieldDecorator('priority', {
+                                    rules: [{ required: true, message: 'Please choose the priority' }],
+                                    initialValue: 'low',
+                                })(
+                                    <Select placeholder="Please choose the priority">
+                                        <Option value="low">Low</Option>
+                                        <Option value="medium">Medium</Option>
+                                        <Option value="high">High</Option>
+                                    </Select>
+                                )}
                             </Form.Item>
                         </Col>
                     </Row>
@@ -150,7 +129,7 @@ class TaskDrawer extends Component {
                     >
                         Cancel
                 	</Button>
-                    <Button onClick={this.onClose} type="primary">Submit</Button>
+                    <Button onClick={this.saveAndClose} type="primary">Submit</Button>
                 </div>
             </Drawer>
         );
