@@ -18,6 +18,8 @@ export default class IndexPage extends Component {
 			currentTast: {}
 		}
 		this.taskService = new TaskService();
+		this.taskDrawerRef = React.createRef();
+		this.showAlert = this.showAlert.bind(this);
 	}
 	
 	componentDidMount() {
@@ -28,14 +30,17 @@ export default class IndexPage extends Component {
 
 	listTasks() {
 		const taskItems = this.state.tasks.map(task =>
-				<TaskItem task={task} onClick={this.showAlert} />
+				<TaskItem key={task.id} task={task} onClick={this.showAlert} />
 		);
 		return taskItems;
 	}
 
 	showAlert(task) {
-		console.log(this.refs);
-		// this.taskDrawerForm.current.loadAndShow(task);
+		this.taskDrawerRef.current.loadAndShow(task);
+	}
+
+	taskDrawerForm = (ref) => {
+		this.taskDrawerRef.current = ref;
 	}
 
 	render() {
@@ -50,7 +55,7 @@ export default class IndexPage extends Component {
 				>
 					{this.listTasks()}
 				</Masonry>
-				<TaskDrawerForm ref="taskDrawerForm" />
+				<TaskDrawerForm wrappedComponentRef={this.taskDrawerForm} />
 			</Layout.Content>
 		);
 	}
