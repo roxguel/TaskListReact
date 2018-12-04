@@ -2,19 +2,7 @@
     {
         "id": 1,
         "name": "Tarea 1",
-        "image": "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
-        "description": "Descripción de la tarea",
-        "checklist": [
-            {"title": "Titulo del check 1", "checked": false},
-            {"title": "Titulo del check 2", "checked": false},
-            {"title": "Titulo del check 3", "checked": false}
-        ],
-        "created_at": "",
-        "updated_at": ""
-    },
-    {
-        "id": 2,
-        "name": "Tarea 2",
+        "image": "",
         "description": "Descripción de la tarea",
         "checklist": [
             {"title": "Titulo del check 1", "checked": false},
@@ -26,7 +14,7 @@
     },
     {
         "id": 3,
-        "name": "Tarea 2",
+        "name": "Tarea 3",
         "description": "Descripción de la tarea",
         "checklist": [],
         "created_at": "",
@@ -34,17 +22,30 @@
     },
     {
         "id": 4,
-        "name": "Tarea 2",
-        "image": "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
+        "name": "Tarea 4",
+        "image": "https://www.gstatic.com/webp/gallery/3.jpg",
         "description": "Descripción de la tarea",
         "checklist": [],
         "created_at": "",
         "updated_at": ""
     },
     {
-        "id": 5,
+        "id": 2,
         "name": "Tarea 2",
-        "image": "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
+        "image": "https://www.gstatic.com/webp/gallery/4.jpg",
+        "description": "Descripción de la tarea",
+        "checklist": [
+            {"title": "Titulo del check 1", "checked": false},
+            {"title": "Titulo del check 2", "checked": false},
+            {"title": "Titulo del check 3", "checked": false}
+        ],
+        "created_at": "",
+        "updated_at": ""
+    },
+    {
+        "id": 5,
+        "name": "Tarea 5",
+        "image": "https://www.gstatic.com/webp/gallery/1.jpg",
         "description": "Descripción de la tarea",
         "checklist": [],
         "created_at": "",
@@ -52,8 +53,8 @@
     },
     {
         "id": 6,
-        "name": "Tarea 2",
-        "image": "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png",
+        "name": "Tarea 6",
+        "image": "https://www.gstatic.com/webp/gallery/2.jpg",
         "description": "Descripción de la tarea",
         "checklist": [],
         "created_at": "",
