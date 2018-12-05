@@ -1,23 +1,32 @@
-
 .normal {
-  font-family: Georgia, sans-serif;
-  margin-top: 4em;
-  text-align: center;
+	font-family: Georgia, sans-serif;
+	margin-top: 4em;
+	text-align: center;
 }
 
 .welcome {
-  height: 328px;
-  background: url(../assets/yay.jpg) no-repeat center 0;
-  background-size: 388px 328px;
+	height: 328px;
+	background: url(../assets/yay.jpg) no-repeat center 0;
+	background-size: 388px 328px;
 }
 
 .list {
-  font-size: 1.2em;
-  margin-top: 1.8em;
-  list-style: none;
-  line-height: 1.5em;
+	font-size: 1.2em;
+	margin-top: 1.8em;
+	list-style: none;
+	line-height: 1.5em;
 }
 
 .list code {
-  background: #f7f7f7;
+	background: #f7f7f7;
+}
+
+.fab_wrap {
+	position: fixed;
+	z-index: 1;
+	bottom: 15px;
+	right: 30px;
+}
+.fab {
+	box-shadow: rgba(0, 0, 0, 0.25) 1px 1px 5px 0px !important;
 }
