@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import { Layout } from 'antd';
+import { Layout, Button } from 'antd';
 import Masonry from 'react-masonry-component';
 import TaskItem from "../components/TaskItem";
 import TaskDrawerForm from "../components/TaskDrawer";
 import { TaskService } from "../services/TaskService";
+import styles from "./index.css";
 
 const masonryOptions = {
     transitionDuration: 0
 };
 const imagesLoadedOptions = { background: '.my-bg-image-el' }
+
 /**
- * @todo Refresh data on save task.
+ * @todo Ready.
  */
 export default class IndexPage extends Component {
 	constructor(props) {
@@ -25,9 +27,7 @@ export default class IndexPage extends Component {
 	}
 	
 	componentDidMount() {
-		this.taskService.all().then(tasks => {
-			this.setState({tasks: tasks});
-		}).catch(console.log);
+		this.getTasks();
 	}
 
 	listTasks() {
@@ -41,13 +41,28 @@ export default class IndexPage extends Component {
 		this.taskDrawerRef.current.loadAndShow(task);
 	}
 
+	newAlert = () => {
+		this.taskDrawerRef.current.loadAndShow({});
+	}
+
 	taskDrawerForm = (ref) => {
 		this.taskDrawerRef.current = ref;
 	}
 
+	refreshTasks = () => {
+		this.getTasks();
+	}
+
+	getTasks = () => {
+		this.taskService.all().then(tasks => {
+			this.setState({tasks: tasks});
+		}).catch(console.log);
+	}
+	
 	render() {
 		return (
 			<Layout.Content>
+				<div className={styles.fab_wrap}><Button onClick={this.newAlert} className={styles.fab} type="primary" shape="circle" icon="plus" size="large" /></div>
 				<Masonry
 					className={'my-gallery-class'} // default ''
 					options={masonryOptions} // default {}
@@ -57,7 +72,7 @@ export default class IndexPage extends Component {
 				>
 					{this.listTasks()}
 				</Masonry>
-				<TaskDrawerForm wrappedComponentRef={this.taskDrawerForm} />
+				<TaskDrawerForm onSave={this.refreshTasks} wrappedComponentRef={this.taskDrawerForm} />
 			</Layout.Content>
 		);
 	}
