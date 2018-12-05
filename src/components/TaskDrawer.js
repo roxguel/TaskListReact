@@ -26,12 +26,17 @@ class TaskDrawer extends Component {
 
     saveAndClose = () => {
         this.taskService = new TaskService();
+        let promise;
         if (this.state.task.id) {
-            this.taskService.update(this.state.task.id, this.state.task);
+            promise = this.taskService.update(this.state.task.id, this.state.task);
         } else {
-            this.taskService.create(this.state.task);
+            promise = this.taskService.create(this.state.task);
         }
-        this.onClose();
+        promise.then(tasks => {
+            console.log(tasks);
+            this.props.onSave();
+            this.onClose();
+        }).catch(console.log)
     }
 
     onClose = () => {
@@ -40,7 +45,7 @@ class TaskDrawer extends Component {
         });
     };
 
-    handleNumberChange = (e) => {
+    handleChange = (e) => {
         const field = e.target.id;
         const value = e.target.value;
         const task = this.state.task;
@@ -70,7 +75,7 @@ class TaskDrawer extends Component {
                             <Form.Item label="Name">
                                 {getFieldDecorator('name', {
                                     rules: [{ required: true, message: 'please enter name' }],
-                                })(<Input onChange={this.handleNumberChange} placeholder="please enter name" />)}
+                                })(<Input placeholder="please enter name" />)}
                             </Form.Item>
                         </Col>
                     </Row>
